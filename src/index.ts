@@ -1,3 +1,5 @@
+declare const confetti: any;
+
 interface ShipmentDimensions {
   length: number;
   width: number;
@@ -190,5 +192,14 @@ window.Webflow.push(() => {
 
     rateDisplay.textContent = `$${result.finalRate.toFixed(2)}`;
     console.log('Calculation result:', result);
+
+    const textRateSmall = document.querySelector<HTMLElement>('#text-rate-small');
+    if (textRateSmall) textRateSmall.textContent = `$${result.finalRate.toFixed(2)}`;
+
+    confetti({
+      particleCount: 150,
+      spread: 150,
+      origin: { x: 0.5, y: 0.5 },
+    });
   });
 });
